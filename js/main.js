@@ -15,10 +15,15 @@
   // The closed off-canvas drawer is hidden via `visibility` in the stylesheet's
   // media query, which keeps it out of the tab order without any JS-side state
   // that could desync from the breakpoint.
+  // The stylesheet delays `visibility` so the drawer can animate out, but a
+  // transition may never finish (background tabs throttle them), which would
+  // leave the closed drawer tabbable. `inert` is applied immediately instead and
+  // costs nothing visually, so the tab order never depends on the animation.
   const closeDrawer = () => {
     navLinks.classList.remove('is-open');
     navToggle.classList.remove('is-open');
     navToggle.setAttribute('aria-expanded', 'false');
+    navLinks.inert = true;
     // Closing must not leave focus stranded on a now-hidden link.
     if (navLinks.contains(document.activeElement)) navToggle.focus();
   };
@@ -27,8 +32,17 @@
     navLinks.classList.add('is-open');
     navToggle.classList.add('is-open');
     navToggle.setAttribute('aria-expanded', 'true');
+    navLinks.inert = false;
     navLinks.querySelector('a').focus();
   };
+
+  // If the viewport grows back to the desktop layout the drawer becomes a plain
+  // visible nav, so a leftover inert flag would make it unreachable. Reading the
+  // toggle's computed display asks the stylesheet directly rather than
+  // duplicating the breakpoint in JS.
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab' && getComputedStyle(navToggle).display === 'none') navLinks.inert = false;
+  }, true);
 
   navToggle.addEventListener('click', () => {
     navLinks.classList.contains('is-open') ? closeDrawer() : openDrawer();
@@ -78,7 +92,7 @@
       const p = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - p, 3);
       const val = Math.round(startVal + (target - startVal) * eased);
-      el.textContent = val.toLocaleString('de-DE') + suffix;
+      el.textContent = val.toLocaleString('en-US') + suffix;
       if (p < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
