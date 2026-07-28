@@ -15,24 +15,39 @@
   // The closed off-canvas drawer is hidden via `visibility` in the stylesheet's
   // media query, which keeps it out of the tab order without any JS-side state
   // that could desync from the breakpoint.
-  // Closing must not leave focus stranded on a now-hidden link.
-  const releaseDrawerFocus = () => {
-    if (navLinks.contains(document.activeElement)) navToggle.focus();
-  };
-
-  navToggle.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('is-open');
-    navToggle.classList.toggle('is-open', open);
-    navToggle.setAttribute('aria-expanded', String(open));
-    if (open) navLinks.querySelector('a').focus();
-    else releaseDrawerFocus();
-  });
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  const closeDrawer = () => {
     navLinks.classList.remove('is-open');
     navToggle.classList.remove('is-open');
     navToggle.setAttribute('aria-expanded', 'false');
-    releaseDrawerFocus();
-  }));
+    // Closing must not leave focus stranded on a now-hidden link.
+    if (navLinks.contains(document.activeElement)) navToggle.focus();
+  };
+
+  const openDrawer = () => {
+    navLinks.classList.add('is-open');
+    navToggle.classList.add('is-open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    navLinks.querySelector('a').focus();
+  };
+
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.contains('is-open') ? closeDrawer() : openDrawer();
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+  document.addEventListener('keydown', (e) => {
+    if (!navLinks.classList.contains('is-open')) return;
+    if (e.key === 'Escape') { closeDrawer(); return; }
+    if (e.key !== 'Tab') return;
+    // Keep Tab inside the open drawer; the toggle doubles as its close control.
+    const items = [navToggle, ...navLinks.querySelectorAll('a')];
+    const first = items[0], last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault(); last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault(); first.focus();
+    }
+  });
 
   /* ---------- Reveal on scroll ---------- */
   const revealEls = document.querySelectorAll('.reveal');

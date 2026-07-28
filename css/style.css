@@ -398,10 +398,15 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; letter-spacing: -0.02e
     background: #0d0d14; backdrop-filter: blur(20px);
     flex-direction: column; justify-content: center; align-items: flex-start; gap: 28px;
     padding: 40px; transform: translateX(100%); visibility: hidden;
-    transition: transform .4s var(--ease);
+    /* visibility flips only after the slide-out finishes, so the drawer animates
+       away instead of vanishing, but still leaves the tab order once closed. */
+    transition: transform .4s var(--ease), visibility 0s linear .4s;
     border-left: 1px solid var(--border);
   }
-  .nav__links.is-open { transform: translateX(0); visibility: visible; }
+  .nav__links.is-open {
+    transform: translateX(0); visibility: visible;
+    transition: transform .4s var(--ease), visibility 0s;
+  }
   .nav__toggle { display: flex; }
   .nav__toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .nav__toggle.is-open span:nth-child(2) { opacity: 0; }
