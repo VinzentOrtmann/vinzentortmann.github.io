@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinzent Ortmann — Games Engineering Portfolio</title>
+<meta name="description" content="Portfolio von Vinzent Ortmann — Games Engineering Student, Level Design, Gameplay- und Engine-Programmierung.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="noise-overlay" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a href="#top" class="nav__brand">VO<span class="nav__brand-dot">.</span></a>
+  <nav class="nav__links">
+    <a href="#work">Projekte</a>
+    <a href="#about">Über mich</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact" class="nav__cta">Kontakt</a>
+  </nav>
+  <button class="nav__toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__grid"></div>
+      <div class="hero__orb hero__orb--a"></div>
+      <div class="hero__orb hero__orb--b"></div>
+      <div class="hero__orb hero__orb--c"></div>
+    </div>
+    <div class="hero__content">
+      <p class="hero__eyebrow reveal">Games Engineering B.Sc. · Universität Würzburg</p>
+      <h1 class="hero__title">
+        <span class="reveal" style="--d:0">Vinzent</span>
+        <span class="reveal" style="--d:1">Ortmann</span>
+      </h1>
+      <p class="hero__subtitle reveal" style="--d:2">
+        Ich baue Spiele von der Engine bis zum letzten Pixel —
+        <span class="hero__typed" id="typedRole">Gameplay Programmer</span>
+      </p>
+      <p class="hero__desc reveal" style="--d:3">
+        Vier Projekte, vier Rollen: Vulkan-Engine in C++20, Solo-Gameplay in Unity, Level-Design im
+        30-köpfigen Team, Netcode in VR.
+      </p>
+      <div class="hero__actions reveal" style="--d:4">
+        <a href="#work" class="btn btn--primary">Projekte ansehen</a>
+        <a href="#contact" class="btn btn--ghost">Kontakt aufnehmen</a>
+      </div>
+    </div>
+    <div class="hero__scroll" aria-hidden="true">
+      <span>scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats reveal">
+    <div class="stats__inner">
+      <div class="stat">
+        <span class="stat__num" data-count="4">0</span>
+        <span class="stat__label">Projekte<br>seit Herbst 2024</span>
+      </div>
+      <div class="stat">
+        <span class="stat__num" data-count="1">0</span>
+        <span class="stat__label">Custom Engine<br>in C++20 &amp; Vulkan</span>
+      </div>
+      <div class="stat">
+        <span class="stat__num" data-count="30">0</span>
+        <span class="stat__label">Personen im größten<br>Teamprojekt</span>
+      </div>
+      <div class="stat">
+        <span class="stat__num" data-count="1">0</span>
+        <span class="stat__label">Kursprojekt demnächst<br>auf Steam</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="work" id="work">
+    <div class="section-head reveal">
+      <p class="section-head__eyebrow">Ausgewählte Projekte</p>
+      <h2>Von der Idee bis zum letzten Build.</h2>
+      <p class="section-head__desc">
+        Direkt aus den Repos: Commits, READMEs, Trailer, Screenshots.
+      </p>
+    </div>
+
+    <!-- PROJECT: CHROMAFLUX -->
+    <article class="project" id="chromaflux" style="--accent: 122 199 145; --accent2: 235 165 105;">
+      <div class="project__media reveal">
+        <div class="project__shot-stack">
+          <img loading="lazy" src="assets/chromaflux/shot-wheel.jpg" alt="Chromaflux: Farbwechsel-Rad mit vier Fähigkeiten im Wald-Level" class="project__shot project__shot--main">
+          <img loading="lazy" src="assets/chromaflux/shot-spider.jpg" alt="Chromaflux: Kampf gegen den Spinnen-Boss" class="project__shot project__shot--sub project__shot--sub1">
+          <img loading="lazy" src="assets/chromaflux/shot-parkour.jpg" alt="Chromaflux: Parcour-Sequenz mit fliegenden Gegnern" class="project__shot project__shot--sub project__shot--sub2">
+        </div>
+      </div>
+      <div class="project__info reveal">
+        <p class="project__tag">Solo-Projekt · GameLab 1 · Unity 2022.3 LTS · C#</p>
+        <h3 class="project__title">Chromaflux</h3>
+        <p class="project__pitch">
+          2D-Action-Platformer über ein Chamäleon, das per Farbwechsel Projektilen ausweicht und vier
+          Fähigkeiten freischaltet.
+        </p>
+        <ul class="project__facts">
+          <li><strong>Kernmechanik:</strong> Farbrad schaltet zwischen Grün, Blau, Rot, Gelb — Projektile der aktiven Farbe schaden nicht.</li>
+          <li><strong>Fähigkeiten:</strong> Dash (Grün), Enterhaken (Blau), Projektil (Rot), Pogo (Gelb).</li>
+          <li><strong>Zwei Bosskämpfe:</strong> Schildkröte mit Kugel-Salven, Spinne mit Bodenangriffen und Spinnweben.</li>
+          <li><strong>Mein Anteil:</strong> alleinige Entwicklung — Code, Design, Levelbau, Art-Direction (seit 21.10.2025).</li>
+        </ul>
+        <div class="project__tech">
+          <span>Unity 2022.3.62 LTS</span><span>C#</span><span>Cinemachine</span><span>Input System</span><span>URP</span><span>Aseprite</span>
+        </div>
+        <div class="project__actions">
+          <button class="link-btn" data-video-target="cf-trailer">▶ Trailer ansehen (1:10)</button>
+          <a class="link-btn link-btn--outline" href="https://github.com/VinzentOrtmann/Chromaflux" target="_blank" rel="noopener">Code auf GitHub ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT: VOXEL SURVIVORS -->
+    <article class="project project--reverse" id="voxelsurvivors" style="--accent: 122 178 255; --accent2: 255 138 91;">
+      <div class="project__media reveal">
+        <div class="project__shot-stack project__shot-stack--reverse">
+          <img loading="lazy" src="assets/voxelsurvivors/shot-horde.jpg" alt="Voxel Survivors: Welle von Gegnern in der Eis-Arena mit Erd-Spell" class="project__shot project__shot--main">
+          <img loading="lazy" src="assets/voxelsurvivors/shot-firespell.jpg" alt="Voxel Survivors: Feuerspell zerstört Terrain in der Vulkan-Arena" class="project__shot project__shot--sub project__shot--sub1">
+          <img loading="lazy" src="assets/voxelsurvivors/shot-boss.jpg" alt="Voxel Survivors: Bosskampf gegen einen voxel-basierten Golem" class="project__shot project__shot--sub project__shot--sub2">
+        </div>
+      </div>
+      <div class="project__info reveal">
+        <p class="project__tag">Solo-Projekt · GameLab 3 · Custom Engine · C++20 &amp; Vulkan</p>
+        <h3 class="project__title">Voxel Survivors</h3>
+        <p class="project__pitch">
+          First-Person Wave-Survival-Shooter auf einer selbstgeschriebenen Voxel-Engine — kein Unity,
+          kein Unreal, Terrain komplett zerstörbar.
+        </p>
+        <ul class="project__facts">
+          <li><strong>Engine von Grund auf:</strong> C++20 mit Vulkan-Compute-Raytracing — DAG für statische Geometrie plus Sparse-Voxel-Octrees pro Chunk.</li>
+          <li><strong>Drei Magieschulen:</strong> Feuer, Blitz, Erde — je zwei alternative Level-4-Fähigkeiten (z. B. Meteor Storm vs. Firestorm).</li>
+          <li><strong>Zerstörung:</strong> Explosionen, Strahlen und Erdspitzen tragen Terrain in Echtzeit ab.</li>
+          <li><strong>Expo-tauglich:</strong> Idle-Screen, Auto-Reset, persistenter High Score, One-Step-Deploy für Messestände.</li>
+          <li><strong>Mein Anteil:</strong> Engine, Gameplay-Systeme, Doku und alle Deliverables (Build, Trailer, Poster, Report).</li>
+        </ul>
+        <div class="project__tech">
+          <span>C++20</span><span>Vulkan</span><span>CMake</span><span>GLM</span><span>Dear ImGui</span><span>Catch2</span><span>MagicaVoxel</span>
+        </div>
+        <div class="project__actions">
+          <button class="link-btn" data-video-target="vs-trailer">▶ Trailer ansehen (1:08)</button>
+          <a class="link-btn link-btn--outline" href="https://github.com/VinzentOrtmann/VoxAccel" target="_blank" rel="noopener">Code auf GitHub ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT: GRAVITY GAME / 2025-GAMESTUDIO -->
+    <article class="project" id="gamestudio" style="--accent: 150 150 190; --accent2: 90 200 230;">
+      <div class="project__media reveal">
+        <div class="project__shot-stack">
+          <img loading="lazy" src="assets/gravitygame/steam-screenshot.jpg" alt="Gravity Gauntlet: Schwerkraft-Rätsel mit schwebendem Würfel in einer Fabrikhalle" class="project__shot project__shot--main">
+          <img loading="lazy" src="assets/gravitygame/steam-capsule.jpg" alt="Gravity Gauntlet: offizielles Steam-Artwork mit Logo" class="project__shot project__shot--sub project__shot--sub1">
+        </div>
+        <p class="illustration__caption">Screenshot &amp; Artwork von Steam (Fair Enough Games), nicht aus dem Uni-Repo</p>
+      </div>
+      <div class="project__info reveal">
+        <p class="project__tag">Level Design in 30-Personen-Team · Uni-Kurs „Game Studio“ · Unity 6</p>
+        <h3 class="project__title">Gravity Game</h3>
+        <p class="project__pitch">
+          Sci-Fi-Puzzle-Platformer mit Schwerkraft-Würfeln, entstanden im Pflichtkurs „Game Studio“ — von
+          Fair Enough Games zu <strong>„Gravity Gauntlet“</strong> weiterentwickelt, bald auf Steam.
+        </p>
+        <ul class="project__facts">
+          <li><strong>Umfang:</strong> ~30 Mitwirkende, 2.774 Commits — semesterlanges Kursprojekt, kein Jam.</li>
+          <li><strong>Levelstruktur:</strong> Facility-Progression über Reaktor, Habitat, Cargo, Factory, Research Lab.</li>
+          <li><strong>Mein Anteil:</strong> Level-Design &amp; Environment Art — Level „4.2“/„4.3“, Trainings-Szene „MovementGym“, mehrere Gravity-Cube-Prefabs.</li>
+          <li><strong>Kein Code-Anteil:</strong> 55 Commits, keine einzige .cs-Datei — reine Level-/Environment-Arbeit.</li>
+          <li><strong>Zweites Leben:</strong> laut Steam-Eintrag „originally created as part of the Game Studio Course“ — erweitert um neue Rätsel, Grafik und Story.</li>
+        </ul>
+        <div class="project__tech">
+          <span>Unity 6</span><span>URP</span><span>Splines</span><span>Timeline</span><span>AI Navigation</span>
+        </div>
+        <div class="project__actions">
+          <a class="link-btn" href="https://store.steampowered.com/app/4156560/Gravity_Gauntlet/" target="_blank" rel="noopener">Gravity Gauntlet auf Steam ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT: GAME LAB II / CreateWithVR -->
+    <article class="project project--reverse" id="gamelab2" style="--accent: 200 130 170; --accent2: 130 190 210;">
+      <div class="project__media reveal">
+        <div class="project__shot-stack project__shot-stack--reverse">
+          <img loading="lazy" src="assets/gamelab2/shot-buttons.jpg" alt="CreateWithVR: Hand greift nach Cooperate/Defect-Buttons am VR-Tisch" class="project__shot project__shot--main">
+          <img loading="lazy" src="assets/gamelab2/shot-handshake.jpg" alt="CreateWithVR: zwei Spieler mit VR-Headsets schütteln sich real die Hand" class="project__shot project__shot--sub project__shot--sub1">
+          <img loading="lazy" src="assets/gamelab2/shot-scoreboard.jpg" alt="CreateWithVR: Scoreboard mit Punkteverlauf beider Spieler" class="project__shot project__shot--sub project__shot--sub2">
+        </div>
+      </div>
+      <div class="project__info reveal">
+        <p class="project__tag">Team-Projekt (2 Personen) · Uni-Kurs „Game Lab II“ · VR Multiplayer</p>
+        <h3 class="project__title">CreateWithVR — Prisoner's Dilemma</h3>
+        <p class="project__pitch">
+          VR-Multiplayer-Sozialexperiment: Gefangenendilemma als physisches Spiel am geteilten virtuellen
+          Tisch, mit Handtracking und Netzwerksync.
+        </p>
+        <ul class="project__facts">
+          <li><strong>Networking:</strong> Netcode for GameObjects + Unity Relay für Peer-to-Peer zwischen zwei VR-Headsets.</li>
+          <li><strong>VR-Interaktion:</strong> XR Interaction Toolkit, OpenXR, Oculus-Handtracking statt Controller-Buttons.</li>
+          <li><strong>Eigenes Framework:</strong> wiederverwendbares „GT“-Framework für Tisch-Interaktionen — Buttons, Boards, Scoreboard.</li>
+          <li><strong>Mein Anteil:</strong> Scoreboard, Tisch-/Board-Setup, Button-Prefabs, NPC-Kopfmodelle. Netzwerk-Logik und Spielregeln: mein Teampartner.</li>
+        </ul>
+        <div class="project__tech">
+          <span>Unity</span><span>Netcode for GameObjects</span><span>Unity Relay</span><span>XR Interaction Toolkit</span><span>OpenXR</span><span>Oculus Hands</span>
+        </div>
+        <div class="project__actions">
+          <button class="link-btn" data-video-target="gl2-trailer">▶ Trailer ansehen (1:36)</button>
+          <a class="link-btn link-btn--outline" href="https://github.com/sol-repos/game-lab-ii" target="_blank" rel="noopener">Code auf GitHub ↗</a>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about__inner reveal">
+      <p class="section-head__eyebrow">Über mich</p>
+      <h2>Vier Projekte, vier verschiedene Rollen — und ich zeige beide Seiten.</h2>
+      <p>
+        Ich studiere Games Engineering in Würzburg. Mich reizt die Bandbreite: mal eine
+        Vulkan-Beschleunigungsstruktur in C++, mal Lichtquellen in einem Unity-Level. Diese Seite zeigt
+        bewusst beide Seiten — auch Projekte, in denen ich nicht Hauptprogrammierer war.
+      </p>
+      <p>
+        Jede Behauptung lässt sich im jeweiligen Repo nachvollziehen — Commits, READMEs, Doku. Was ich
+        nicht belegen kann, steht hier nicht.
+      </p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills" id="skills">
+    <div class="section-head reveal">
+      <p class="section-head__eyebrow">Technologien</p>
+      <h2>Womit ich tatsächlich gearbeitet habe.</h2>
+    </div>
+    <div class="skills__grid reveal">
+      <div class="skill-group">
+        <h3>Engines &amp; Sprachen</h3>
+        <div class="chip-row">
+          <span>Unity (2022 LTS &amp; Unity 6)</span><span>C#</span><span>C++20</span><span>Custom Engine Architecture</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Graphics &amp; Low-Level</h3>
+        <div class="chip-row">
+          <span>Vulkan (Compute Raytracing)</span><span>SPIR-V / GLSL</span><span>Sparse Voxel Octrees</span><span>URP</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Multiplayer &amp; VR</h3>
+        <div class="chip-row">
+          <span>Netcode for GameObjects</span><span>Unity Relay</span><span>XR Interaction Toolkit</span><span>OpenXR / Oculus</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Tools &amp; Workflow</h3>
+        <div class="chip-row">
+          <span>Git</span><span>CMake</span><span>Aseprite</span><span>MagicaVoxel</span><span>Doxygen</span><span>Cinemachine</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact__inner reveal">
+      <p class="section-head__eyebrow">Kontakt</p>
+      <h2>Lust auf ein Gespräch über eines dieser Projekte?</h2>
+      <p class="contact__desc">
+        Drei der vier Projekte verlinken direkt auf GitHub. Das Gravity-Game-Repo liegt privat auf
+        Uni-GitLab — bei Interesse zeige ich es gerne direkt.
+      </p>
+      <a href="mailto:vinzentortmann@gmail.com" class="btn btn--primary btn--large">vinzentortmann@gmail.com</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>&copy; 2026 Vinzent Ortmann. Screenshots &amp; Trailer aus den jeweiligen Repos.</p>
+</footer>
+
+<!-- VIDEO LIGHTBOX -->
+<div class="video-modal" id="videoModal" aria-hidden="true">
+  <div class="video-modal__backdrop" data-close></div>
+  <div class="video-modal__box">
+    <button class="video-modal__close" data-close aria-label="Schließen">&times;</button>
+    <video id="cf-trailer" class="video-modal__video" data-src="assets/chromaflux/trailer.mp4" controls preload="none" poster="assets/chromaflux/shot-wheel.jpg"></video>
+    <video id="vs-trailer" class="video-modal__video" data-src="assets/voxelsurvivors/trailer.mp4" controls preload="none" poster="assets/voxelsurvivors/shot-horde.jpg" hidden></video>
+    <video id="gl2-trailer" class="video-modal__video" data-src="assets/gamelab2/trailer.mp4" controls preload="none" poster="assets/gamelab2/shot-buttons.jpg" hidden></video>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
