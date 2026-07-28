@@ -12,15 +12,26 @@
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 
+  // The closed off-canvas drawer is hidden via `visibility` in the stylesheet's
+  // media query, which keeps it out of the tab order without any JS-side state
+  // that could desync from the breakpoint.
+  // Closing must not leave focus stranded on a now-hidden link.
+  const releaseDrawerFocus = () => {
+    if (navLinks.contains(document.activeElement)) navToggle.focus();
+  };
+
   navToggle.addEventListener('click', () => {
     const open = navLinks.classList.toggle('is-open');
     navToggle.classList.toggle('is-open', open);
     navToggle.setAttribute('aria-expanded', String(open));
+    if (open) navLinks.querySelector('a').focus();
+    else releaseDrawerFocus();
   });
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     navLinks.classList.remove('is-open');
     navToggle.classList.remove('is-open');
     navToggle.setAttribute('aria-expanded', 'false');
+    releaseDrawerFocus();
   }));
 
   /* ---------- Reveal on scroll ---------- */
@@ -102,12 +113,16 @@
   /* ---------- Video lightbox ---------- */
   const modal = document.getElementById('videoModal');
   const videos = modal.querySelectorAll('video');
+  const closeBtn = modal.querySelector('.video-modal__close');
+  let lastFocused = null;
 
   const closeModal = () => {
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
+    modal.inert = true;
     videos.forEach(v => { v.pause(); });
     document.body.style.overflow = '';
+    if (lastFocused) { lastFocused.focus(); lastFocused = null; }
   };
 
   const openModal = (targetId) => {
@@ -124,9 +139,12 @@
         v.pause();
       }
     });
+    lastFocused = document.activeElement;
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
+    modal.inert = false;
     document.body.style.overflow = 'hidden';
+    closeBtn.focus();
   };
 
   document.querySelectorAll('[data-video-target]').forEach(btn => {
@@ -134,7 +152,17 @@
   });
   modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeModal));
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    if (!modal.classList.contains('is-open')) return;
+    if (e.key === 'Escape') { closeModal(); return; }
+    if (e.key !== 'Tab') return;
+    // trap focus inside the dialog
+    const focusable = [closeBtn, ...modal.querySelectorAll('video:not([hidden])')];
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault(); last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault(); first.focus();
+    }
   });
 
 })();
