@@ -203,7 +203,7 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; letter-spacing: -0.02e
 }
 .stats__inner {
   max-width: var(--maxw); margin: 0 auto; padding: 56px 24px;
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
 }
 .stat { text-align: center; }
 .stat__num {
@@ -390,7 +390,6 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; letter-spacing: -0.02e
    RESPONSIVE
    ============================================================ */
 @media (max-width: 900px) {
-  .stats__inner { grid-template-columns: repeat(2, 1fr); }
   .skills__grid { grid-template-columns: repeat(2, 1fr); }
   .project, .project--reverse { grid-template-columns: 1fr; gap: 40px; }
   .project--reverse .project__media, .project--reverse .project__info { order: unset; }
@@ -412,7 +411,7 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; letter-spacing: -0.02e
 
   .hero { padding-top: 120px; }
   .hero__scroll { display: none; }
-  .stats__inner { grid-template-columns: 1fr 1fr; gap: 32px 16px; }
+  .stats__inner { grid-template-columns: 1fr; gap: 32px; }
   .skills__grid { grid-template-columns: 1fr; }
   .work { padding-top: 100px; }
   .project { padding: 60px 0; }
